@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+{% block title %}
+    forgot Page
+{% endblock %}
+
+{% block content %}
+<div class="container">
+<h1>forgot page</h1>
+<hr>
+</div>
+<form method="post" action="">
+<div class="container">
+<br>
+    <label for="email"><b>Email:</b></label>
+      <br>
+    <input type="text" placeholder="Enter Email" name="email" id="email" required>
+    <br>
+
+<p class="form-actions">
+    <br>
+<input class="btn btn-primary" type="submit" value="submit" title="Change password" />
+    <span class="psw"> <a href="#"> don't got a email?</a></span>
+</p>
+</div>
+</form>
+
+
+{% endblock %}

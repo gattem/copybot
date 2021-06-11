@@ -1,0 +1,14 @@
+--- 
+-  become: true
+   hosts: all
+   vars:
+      src_base_path: /home/mahesh
+      file_name: "testfile"
+      dest_path: "{{ ansible_env.HOME }}/{{ file_name }}"
+   name: "copy files"
+   tasks:
+     - name: Copy file with owner and permissions
+       copy:
+         src: "{{ src_base_path }}/{{ file_name }}"
+         dest: "{{ dest_path }}"
+          

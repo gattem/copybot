@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}
+    about Page
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <h1>About Us </h1>
+    <hr>
+  <p>In this project  we need to create an application that help the user to establish connect between the local machine and the remote machine and to transfer the files( doctuments , images, pdf etc..,) from master machine to to the worker machine using various tools.
+</p>
+  <p> this project we will be using ansible playbooks to connect with the node machines and transfer files across the machines.
+In this project we are using Angular for the front end and java as a backend. The node and master machines are created by AWS . And establish connection via SSH and controller them using ansible.
+</p>
+</div>
+
+
+<h2 style="text-align:center">Our Team</h2>
+
+  <div class="container">
+   <div class="row">
+    <div class="card" style="width:18em">
+      <img class="card-image-top" src="{{ url_for('static', filename= 'pictures/rahulSir.png')}}" alt="Rahul">
+        <div class="card-body">
+        <h2 class="card-title">Rahul Hada </h2>
+        <p class="card-text">Team Lead and SPOC</p>
+        <p class="card-text">Rahulhada@rakuten.com</p>
+        <p><button class="btn btn-primary">Contact</button></p>
+        </div>
+    </div>
+
+    <div class="card" style="width:13.5em">
+      <img  class="card-image-top" src="{{ url_for( 'static', filename= 'pictures/mahesh.jpg')}}" alt="Mahesh">
+      <div class="card-body">
+        <h2 class="card-title">G.Mahesh </h2>
+        <p class="card-text">Intern</p>
+        <p class="card-text">maheshgattem@rakuten.com</p>
+        <p><button class="btn btn-primary">Contact</button></p>
+        </div>
+    </div>
+  </div>
+ </div>
+
+  <div class="container">
+   <div class="column">
+
+  </div>
+ </div>
+
+
+{% endblock %}

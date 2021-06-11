@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}
+    Home Page
+{% endblock %}
+
+{% block content %}
+
+<br>
+<br>
+<div class="container" >
+    <div >
+      <h2 class="bottom">
+          Hi {{session.username}}!!</br> Welcome to the CopyBot Page...
+      </h2>
+  </div>
+    <hr>
+    <p>What files do you want to upload?</p>
+    <form method=post enctype=multipart/form-data>
+      <input type=file name=file>
+      <input  class="btn btn-primary"type=submit value=Upload>
+    </form>
+
+</div>
+
+
+
+{% endblock %}
