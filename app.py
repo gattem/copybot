@@ -101,6 +101,10 @@ def upload_file():
     return render_template('home.html')
 
 @app.route('/')
+def home():
+    print("Inside home()")
+    return redirect(url_for('login_page'))
+
 @app.route('/login', methods=['GET', 'POST'])
 def login_page():
     print("Inside login_page()")
@@ -122,7 +126,8 @@ def login_page():
             session['username'] = account[1]
             msg = 'Logged in successfully !'
             print("login success")
-            return render_template('home.html', msg=msg)
+            # return render_template('home.html', msg=msg)
+            return redirect(url_for('home_page'))
         else:
             msg = 'Incorrect username / password !'
             print('Incorrect username / password !')
@@ -164,6 +169,7 @@ def register_page():
             print("register success")
     elif request.method == 'POST':
         msg = 'Please fill out the form !'
+
         print("register failed- empty form")
     else:
         msg = 'Something went wrong !'
@@ -173,6 +179,9 @@ def register_page():
 @app.route('/home')
 def home_page():
     print("Inside home_page()")
+    if not session and not 'username' in session:
+        print ("The session is %s" % session)
+        return render_template('home.html')
     return render_template('home.html')
 
 @app.route('/upload' , methods = ['POST','GET'])
