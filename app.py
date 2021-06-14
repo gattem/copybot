@@ -49,9 +49,12 @@ app.add_url_rule(
 
 @app.route('/home', methods=['GET', 'POST'])
 def upload_file():
-    print("Inside upload_file()")
+    print("Inside /home->upload_file()")
     print ("The request is %s" % request)
-    
+    if not session and not 'username' in session:
+        print ("The session is %s" % session)
+        return redirect(url_for('login_page'))
+      
     if request.method == 'POST':
         
         # check if the post request has the file part
@@ -102,12 +105,15 @@ def upload_file():
 
 @app.route('/')
 def home():
-    print("Inside home()")
+    print("Inside /->home()")
+    if session and 'username' in session:
+        print ("The session is %s" % session)
+        return redirect(url_for('home_page'))
     return redirect(url_for('login_page'))
 
 @app.route('/login', methods=['GET', 'POST'])
 def login_page():
-    print("Inside login_page()")
+    print("Inside /login->login_page()")
     print ("The request is %s" % request)
     msg = ''
     if session and 'username' in session:
@@ -135,7 +141,10 @@ def login_page():
 
 @app.route('/logout')
 def logout_page():
-    print("Inside logout_page()")
+    print("Inside /logout->logout_page()")
+    if not session and not 'username' in session:
+      print ("The session is %s" % session)
+      return redirect(url_for('login_page'))
     session.pop('loggedin', None)
     session.pop('id', None)
     session.pop('username', None)
@@ -181,7 +190,7 @@ def home_page():
     print("Inside home_page()")
     if not session and not 'username' in session:
         print ("The session is %s" % session)
-        return render_template('home.html')
+        return redirect(url_for('login_page'))
     return render_template('home.html')
 
 @app.route('/upload' , methods = ['POST','GET'])
