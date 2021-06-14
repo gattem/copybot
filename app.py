@@ -15,7 +15,6 @@ cdir=os.getcwd()
 print ("The current working directory is %s" % cdir)
 wdir="storage"
 
-
 UPLOAD_FOLDER = os.path.join(cdir,wdir)
 print ("The upload directory is %s" % UPLOAD_FOLDER)
 
@@ -156,6 +155,9 @@ def register_page():
     print("Inside register_page()")
     print ("The request is %s" % request)
     msg = ''
+    if session and 'username' in session:
+        print ("The session is %s" % session)
+        return redirect(url_for('home_page'))
     if request.method == 'POST' and 'username' in request.form and 'password' in request.form and 'email' in request.form:
         username = request.form['username']
         password = request.form['password']
@@ -178,7 +180,6 @@ def register_page():
             print("register success")
     elif request.method == 'POST':
         msg = 'Please fill out the form !'
-
         print("register failed- empty form")
     else:
         msg = 'Something went wrong !'
