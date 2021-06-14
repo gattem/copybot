@@ -165,7 +165,7 @@ def register_page():
     elif request.method == 'POST':
         msg = 'Please fill out the form !'
         print("register failed- empty form")
-    else
+    else:
         msg = 'Something went wrong !'
         print("register failed-error")
     return render_template('register.html', msg=msg)
